@@ -48,7 +48,7 @@ const Level1 = () => {
             <hr />
             <Intro introContent={introContent} />
             <hr />
-            <Box minH='50vh' bg='#0f0a19' color='gray.500' px={6} py={8}>
+            <Box minH='50vh' bg='#0f0a19' color='white' px={6} py={8}>
                 <CodeEditor defaultValue={defaultValue} />
             </Box>
         </div>
