@@ -1,0 +1,13 @@
+.intro {
+    border: 1px solid grey;
+    border-radius: 1%;
+    width: 95vh;
+    /* Remove or adjust the height property */
+    /* height: 40vh; */
+    /* Allow overflow content */
+    overflow: auto;
+}
+
+.content{
+    margin: 10px;
+}

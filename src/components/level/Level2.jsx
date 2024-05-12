@@ -1,10 +1,25 @@
+import CodeEditor from "../CodeEditor";
+import { Box } from "@chakra-ui/react";
+import Intro from '../Intro';
 
 const Level2 = () => {
+
+    const defaultValue = `//Level 2: Data Types`
+
+    const introContent =
+        <div>
+            <h2>Introduction</h2>
+        </div>
 
     return (
         <div>
             <h2>Level 2: Data Types</h2>
             <hr />
+            <Intro introContent={introContent} />
+            <hr />
+            <Box minH='20vh' bg='#0f0a19' color='white' px={6} py={8}>
+                <CodeEditor defaultValue={defaultValue} />
+            </Box>
         </div>
     )
 }

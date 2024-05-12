@@ -1,41 +1,39 @@
-import React, { useState } from 'react';
-import MonacoEditor from 'react-monaco-editor';
+import { useRef, useState } from "react";
+import { Box, HStack } from "@chakra-ui/react";
+import { Editor } from "@monaco-editor/react";
+import Output from "./Output";
 
-function CodeEditor() {
-    const [code, setCode] = useState('');
-    const [output, setOutput] = useState('');
+const CodeEditor = (props) => {
+    const editorRef = useRef();
+    const [value, setValue] = useState(props.defaultValue);
 
-    const runCode = () => {
-        try {
-            const result = eval(code);
-            setOutput(result.toString()); // Convert result to string and set as output
-        } catch (error) {
-            console.error('Error executing code:', error);
-            setOutput('Error: ' + error.message); // Display error message
-        }
+    const onMount = (editor) => {
+        editorRef.current = editor;
+        editor.focus();
     };
 
     return (
-        <div>
-            <MonacoEditor
-                language="javascript"
-                theme="vs-dark"
-                value={code}
-                onChange={setCode}
-                options={{
-                    minimap: {
-                        enabled: false
-                    }
-                }}
-                style={{ height: "400px" }}
-            />
-            <button onClick={runCode}>Run</button>
-            <div>
-                <h2>Output:</h2>
-                <pre>{output}</pre> {/* Display output here */}
-            </div>
-        </div>
+        <Box>
+            <HStack spacing={4}>
+                <Box w="50%">
+                    <Editor
+                        options={{
+                            minimap: {
+                                enabled: false,
+                            },
+                        }}
+                        height="75vh"
+                        theme="vs-dark"
+                        language="javascript"
+                        //defaultValue="javascript"
+                        onMount={onMount}
+                        value={value}
+                        onChange={(value) => setValue(value)}
+                    />
+                </Box>
+                <Output editorRef={editorRef} language="javascript" />
+            </HStack>
+        </Box>
     );
-}
-
+};
 export default CodeEditor;
