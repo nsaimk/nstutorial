@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AppClass from './AppClass';
 import ErrorPage from './components/ErrorPage';
+import { Analytics } from '@vercel/analytics/react';
 //import LoginPage from './components'
 import Level1 from './components/level/Level1'
 import Level2 from './components/level/Level2'
@@ -222,9 +223,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <Analytics />
   </React.StrictMode>
 );
-
-
-
-///Users/saim/Documents/GitHub/nstutorial/src/components/level
