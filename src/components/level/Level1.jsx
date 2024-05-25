@@ -1,6 +1,8 @@
 import CodeEditor from "../CodeEditor";
 import { Box } from "@chakra-ui/react";
 import Intro from '../Intro';
+import { useNavigate } from 'react-router-dom';
+
 
 const Level1 = () => {
 
@@ -42,6 +44,12 @@ const Level1 = () => {
             </div>
         </div>
 
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate('/level2');
+    };
+
     return (
         <div>
             <h2>Level 1: Variables</h2>
@@ -51,6 +59,7 @@ const Level1 = () => {
             <Box minH='50vh' bg='#0f0a19' color='white' px={6} py={8}>
                 <CodeEditor defaultValue={defaultValue} />
             </Box>
+            <button onClick={handleGetStarted}>Next Level</button>
         </div>
     )
 }

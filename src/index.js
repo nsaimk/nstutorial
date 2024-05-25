@@ -5,6 +5,7 @@ import AppClass from './AppClass';
 import ErrorPage from './components/ErrorPage';
 import { Analytics } from '@vercel/analytics/react';
 //import LoginPage from './components'
+import Home from './components/Home';
 import Level1 from './components/level/Level1'
 import Level2 from './components/level/Level2'
 import Level3 from './components/level/Level3'
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
     element: <AppClass />,
     errorElement: <ErrorPage />,
     children: [
-      /* { index: true, element: <Home /> }, */
+      { index: true, element: <Home /> },
       {
         path: "/level1",
         element: <Level1 />,

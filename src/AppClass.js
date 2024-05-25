@@ -6,7 +6,9 @@ function App() {
         <div className="container">
             <div className="row">
                 <div className="col">
-                    <img className="mt-3" src={Logo} alt="movie tickets" style={{width: '100px', height: '100px'}}></img>
+                    <Link to="/">
+                    <img className="mt-3" src={Logo} alt="movie tickets" style={{ width: '100px', height: '100px' }}></img>
+                    </Link>
                 </div>
                 <div className="col text-end">
                     <Link to="/login"><span className="badge bg-success">Login</span></Link>
