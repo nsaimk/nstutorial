@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import CodeEditor from "../CodeEditor";
 import { Box } from "@chakra-ui/react";
 import Intro from '../Intro';
@@ -5,6 +6,28 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Level1 = () => {
+
+    const [lessons, setLessons] = useState([]);
+
+    useEffect(() => {
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
+
+        const requestOptions = {
+            method: "GET",
+            headers: headers,
+        }
+
+        fetch(`http://localhost:8080/lessons`, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+                setLessons(data[0].content.title);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }, []);
 
     const defaultValue = `//Level 1: Variables \n\n//Define a variable called 'x', \n//and assign its value as 5\n\n// Write your code here then Run Code\n\n\nconsole.log(x)`
 
@@ -52,7 +75,7 @@ const Level1 = () => {
 
     return (
         <div>
-            <h2>Level 1: Variables</h2>
+            <h2>Level 1: {lessons}</h2>
             <hr />
             <Intro introContent={introContent} />
             <hr />
